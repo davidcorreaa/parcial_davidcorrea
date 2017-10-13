@@ -1,0 +1,52 @@
+CREATE TABLESPACE COURSES datafile
+'courses1.dbf' size 50M,
+'courses2.dbf' size 50M;
+
+CREATE PROFILE ADMIN 
+LIMIT SESSIONS_PER_USER 2
+IDLE_TIME 15 
+FAILED_LOGIN_ATTEMPTS 3 ;
+
+CREATE USER DAVICORREAA identified by USER1
+DEFAULT TABLESPACE COURSES
+profile ADMIN;
+
+
+GRANT ALL PRIVILEGES TO DAVICORREAA;
+
+CREATE TABLE COURSES 
+	(id INT PRIMARY KEY not null,
+    name varchar(225)not null,
+   code varchar(225)not null,
+    date_start DATE not null,    
+    date_end DATE not null)
+   ;
+   CREATE TABLE STUDENTS
+   (id INT PRIMARY KEY not null,
+    first_name varchar(225)not null,
+    last_name varchar(225)not null,
+    last_name DATE not null,    
+    city varchar(225)not null,
+    address varchar(225)not null
+   
+   );
+      CREATE TABLE ATTENDANCE
+   (id INT PRIMARY KEY not null,
+    student_id INT not null,
+    course_id INT not null,
+    attendance_date DATE not null   
+       
+   );
+        CREATE TABLE ANSWERS
+   (id INT PRIMARY KEY not null,
+ number_of_question  varchar(225)not null,
+    answer varchar(225)not null
+      
+      
+   );
+   
+   CREATE SEQUENCE answer_sequence 
+START WITH 100
+INCREMENT BY 1;
+   
+   
